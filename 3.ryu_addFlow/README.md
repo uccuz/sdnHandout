@@ -11,7 +11,7 @@
 ## 拓樸圖
 
 ![](https://i.imgur.com/A230Cze.jpg)
-- 使用mininet建置
+
 
 ## 實作
 

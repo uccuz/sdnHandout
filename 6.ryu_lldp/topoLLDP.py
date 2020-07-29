@@ -2,7 +2,6 @@
 from mininet.cli import CLI
 from mininet.net import Mininet
 from mininet.node import RemoteController
-from mininet.link import TCLink
 
 if '__main__' == __name__:
 	# 宣告 Mininet 使用的 Controller 種類
@@ -24,11 +23,15 @@ if '__main__' == __name__:
     h4 = net.addHost('h4', mac='00:00:00:00:00:04', ip='10.0.0.4')
 	
 	# 建立連線
-    net.addLink(s1, h1,cls=TCLink, delay="50ms")
-    net.addLink(s1, h2,cls=TCLink, delay="100ms")
-    net.addLink(s1, h3,cls=TCLink, delay="150ms")
-    net.addLink(s1, h4,cls=TCLink, delay="200ms")
+    net.addLink(s1, h1, port1=1, port2=1)
+    net.addLink(s2, h2, port1=1, port2=1)
+    net.addLink(s3, h3, port1=1, port2=1)
+    net.addLink(s4, h4, port1=1, port2=1)
 
+    net.addLink(s1, s2, port1=2, port2=2)
+    net.addLink(s3, s4, port1=2, port2=2)
+    net.addLink(s1, s3, port1=3, port2=3)
+    net.addLink(s2, s4, port1=3, port2=3)
 
     # 建立 Mininet
     net.build()
@@ -38,6 +41,9 @@ if '__main__' == __name__:
 	
     # 啟動 Switch，並指定連結的 Controller 為 c0
     s1.start([c0])
+    s2.start([c0])
+    s3.start([c0])
+    s4.start([c0])
 
 
 
