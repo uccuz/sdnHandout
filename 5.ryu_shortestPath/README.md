@@ -1,5 +1,18 @@
 # ryu shortestPath
-實際建構shortestPath controller,詳見code
+實際建構shortestPath controller
+
+## mininet延遲網路建置
+
+#### import library
+```shell=
+from mininet.link import TCLink
+```
+#### 在連結下設定延遲
+```shell=
+net.addLink(s1, h1,cls=TCLink, delay="50ms")
+```
+
+
 
 ## 測試
 
