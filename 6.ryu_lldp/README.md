@@ -7,7 +7,18 @@
 
 ![](https://i.imgur.com/A230Cze.jpg)
 
+## 技術
+
 ## 測試
+
+### switch一開始連上controller的設定
+```python=
+@set_ev_cls(ofp_event.EventOFPSwitchFeatures,CONFIG_DISPATCHER)
+def switch_features_handler(self, ev):
+    #當封包為LLDP時，傳送給controller
+    match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_LLDP
+    self.send_port_desc_stats_request(datapath)# send the request
+```
 
 ### 開啟ryu及mininet
 ```shell=
